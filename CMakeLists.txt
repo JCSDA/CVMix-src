@@ -5,7 +5,7 @@
 
 cmake_minimum_required( VERSION 3.3.2 FATAL_ERROR )
 
-project( CVMix Fortran )
+project( cvmix Fortran )
 
 set( CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH} )
 
@@ -39,42 +39,42 @@ ecbuild_enable_fortran( REQUIRED )
 # Export package info
 ################################################################################
 
-list( APPEND CVMix_TPLS )
+list( APPEND CVMIX_TPLS )
 
-set( CVMix_INCLUDE_DIRS ${CMAKE_Fortran_MODULE_DIRECTORY})
-set( CVMix_LIBRARIES CVMix )
+set( CVMIX_INCLUDE_DIRS ${CMAKE_Fortran_MODULE_DIRECTORY})
+set( CVMIX_LIBRARIES cvmix)
 
-get_directory_property( CVMix_DEFINITIONS COMPILE_DEFINITIONS )
+get_directory_property( CVMIX_DEFINITIONS COMPILE_DEFINITIONS )
 
-foreach( _tpl ${CVMix_TPLS} )
+foreach( _tpl ${CVMIX_TPLS} )
   string( TOUPPER ${_tpl} TPL )
-  list( APPEND CVMix_EXTRA_DEFINITIONS   ${${TPL}_DEFINITIONS}  ${${TPL}_TPL_DEFINITIONS}  )
-  list( APPEND CVMix_EXTRA_INCLUDE_DIRS  ${${TPL}_INCLUDE_DIRS} ${${TPL}_TPL_INCLUDE_DIRS} )
-  list( APPEND CVMix_EXTRA_LIBRARIES     ${${TPL}_LIBRARIES}    ${${TPL}_TPL_LIBRARIES}    )
+  list( APPEND CVMIX_EXTRA_DEFINITIONS   ${${TPL}_DEFINITIONS}  ${${TPL}_TPL_DEFINITIONS}  )
+  list( APPEND CVMIX_EXTRA_INCLUDE_DIRS  ${${TPL}_INCLUDE_DIRS} ${${TPL}_TPL_INCLUDE_DIRS} )
+  list( APPEND CVMIX_EXTRA_LIBRARIES     ${${TPL}_LIBRARIES}    ${${TPL}_TPL_LIBRARIES}    )
 endforeach()
 
 ################################################################################
 # Sources
 ################################################################################
 
-set( CVMix_LINKER_LANGUAGE Fortran )
+set( CVMIX_LINKER_LANGUAGE Fortran )
 
-include( CVMix_compiler_flags )
-include_directories( ${CVMix_INCLUDE_DIRS} )
+include( cvmix_compiler_flags )
+include_directories( ${CVMIX_INCLUDE_DIRS} )
 
 add_subdirectory(src)
 
-list ( APPEND CVMix_files
-	${CVMix_shared_files}
+list ( APPEND cvmix_files
+	${cvmix_shared_files}
 )
 
 ################################################################################
 # Library
 ################################################################################
 
-ecbuild_add_library( TARGET   CVMix
-                     SOURCES  ${CVMix_files}
-                     LINKER_LANGUAGE ${CVMix_LINKER_LANGUAGE}
+ecbuild_add_library( TARGET   cvmix
+                     SOURCES  ${cvmix_files}
+                     LINKER_LANGUAGE ${CVMIX_LINKER_LANGUAGE}
                     )
 
 ################################################################################
@@ -82,7 +82,7 @@ ecbuild_add_library( TARGET   CVMix
 ################################################################################
 
 # prepares a tar.gz of the sources and/or binaries
-ecbuild_install_project( NAME CVMix )
+ecbuild_install_project( NAME cvmix )
 
 # print the summary of the configuration
 ecbuild_print_summary()

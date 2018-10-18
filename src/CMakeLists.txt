@@ -1,4 +1,4 @@
-set ( CVMix_shared_files
+set ( cvmix_shared_files
 src/shared/cvmix_background.F90
 src/shared/cvmix_convection.F90
 src/shared/cvmix_ddiff.F90
