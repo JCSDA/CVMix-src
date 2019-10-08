@@ -1,0 +1,8 @@
+set ( DRIVERS_SRCS
+  ${CMAKE_CURRENT_SOURCE_DIR}/cvmix_bgrnd_BL.F90
+  ${CMAKE_CURRENT_SOURCE_DIR}/cvmix_ddiff_drv.F90
+  ${CMAKE_CURRENT_SOURCE_DIR}/cvmix_kpp_drv.F90
+  ${CMAKE_CURRENT_SOURCE_DIR}/cvmix_shear_drv.F90
+  ${CMAKE_CURRENT_SOURCE_DIR}/cvmix_tidal_Simmons.F90
+  PARENT_SCOPE
+)

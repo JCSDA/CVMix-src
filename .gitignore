@@ -1,0 +1,8 @@
+# Untracked files
+#
+*.[oa]
+*.mod
+*.swp
+
+build/
+install/
